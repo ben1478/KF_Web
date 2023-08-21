@@ -1,0 +1,276 @@
+﻿body 
+{
+	
+}
+
+
+	.MutiSelect
+	{
+		width: auto; height: auto; max-height: 150px; min-width: 150px;
+		}
+	#MaintainForm.table-bordered > thead > tr > td, .table-bordered > tbody > tr > td, .table-bordered > tfoot > tr > td
+	{
+		word-wrap:break-word;word-break:break-all;
+		}
+	
+.DropFile
+{
+	width:70%;
+    height:150px;
+    line-height:150px;
+    border:5px dashed #CCC;
+
+    font-family:Verdana;
+    text-align:center;
+	}
+#content.table-layout > div, #content.table-layout > section
+{
+	padding:5px 20px 50px !important; 
+	}
+.page-heading
+{
+	margin:0px -20px 20px !important; 
+	}
+
+
+.Sel ,.Sel td {
+	background: #F1E1FF !important;
+}
+.odd
+{
+	background-color: #fff !important;
+}
+.even
+{
+	background-color: #f9f9f9 !important;
+}
+
+tr.odd td
+{
+	background-color: #fff !important;
+}
+
+tr.even td
+{
+	background-color: #f9f9f9 !important;
+}
+
+.hand
+{
+	cursor:pointer;
+}
+.MultiSelect
+{
+	cursor:pointer;
+}
+.PageCtrl
+{
+	color:Blue;
+	cursor:pointer;
+}
+.col-lg-2 {
+	width: 100% !important;
+}
+.Main
+{
+	margin-left: 20px !important;
+margin-right: 20px !important;
+	}
+.Maintain
+{
+width:100%;
+
+height:auto;
+background-color:White;
+	}
+.Maintain td
+{
+	padding-top: 5px; padding-bottom:5px;
+	
+}
+.tabGridHead th
+{
+	background-color:#E0E0E0 !important;
+	text-align:center;
+}
+  		.DtlGridHead th
+  	{
+  	background-color:#E0E0E0 !important;
+  	text-align:center;
+  		
+  		}
+  		.dt-panelfooter
+  		{
+  	background-color:#E0E0E0 !important;
+  			
+  			}
+  			
+  			
+  			.Dtl-heading {
+  position: relative;
+  height: 50px;
+  line-height: 50px;
+  background: #fafafa;
+  color: #666666;
+
+  
+}
+.DtlIco
+{
+	background-image:url("../Img/DtlIco.png");
+	width:19px;
+	height:16px;
+}
+.DownLoad
+{
+	cursor:pointer;
+	color:Blue;
+	text-decoration:underline;
+}
+input.form-control 
+{
+	height:25px !important;
+	padding-top:3px !important;
+}
+.panel-body
+{
+	padding:3px !important;
+}
+.panel
+{
+	margin-bottom:5px !important;
+}
+.divHistory
+{
+	width:320px;
+	
+	overflow:auto;
+	}
+	.divHistoryUl
+{
+	width:330px;
+	height:300px;overflow:auto;
+	}
+.tbHisItem
+{
+		width:300px;
+}
+.tbHisItem tr:hover { 
+    background-color: #d0d0d0;
+    cursor:pointer;
+}
+.AllowEmpty { 
+    color: red;
+    font-weight:bold;
+}
+#selLi
+{
+    background-color: #d0d0d0;
+	
+	}
+	
+	
+	#divGridArea
+	{
+		width:100%;height:60%;
+		}
+		td.lbl
+			{
+			
+			text-align:right !important;
+			}
+			.control-label
+			{
+				width:auto;
+				}
+		.BtnArea
+		{
+		width:100%;
+		}
+		
+		div.PanelLeft table tr td
+		{
+			text-align:left ;
+			}
+		div.PanelLeft
+		{
+			width:100% !important;
+			}	
+			
+			textarea { height: 150px !important; resize: none !important;  }
+			
+			.SiteFormStatus
+			{
+				cursor:pointer;
+	color:Blue;
+	text-decoration:underline;
+				}
+				
+				.QueryIco
+			{
+	color:Blue;
+			}
+			
+			.GridMSG
+			{
+	color:Black;
+	font-weight:bold;
+				
+				}
+			
+			.dep-01 .panel-heading {
+  background: #cbedff;
+}
+.dep-02 .panel-heading {
+  background: #faf7d8;
+}
+.dep-03 .panel-heading {
+  background: #d5edf7;
+}
+.dep-04 .panel-heading {
+  background: #eaffe1;
+}
+.dep-05 .panel-heading {
+  background: #fdd8e5;
+}
+.dep-06 .panel-heading {
+  background: #ffebf3;
+}
+.dep-07 .panel-heading {
+  background: #ffe1f5;
+}
+.dep-08 .panel-heading {
+  background: #e6f7cf;
+}
+.dep-09 .panel-heading {
+  background: #fcfad6;
+}
+.dep-10 .panel-heading {
+  background: #fedaff;
+}
+.dep-11 .panel-heading {
+  background: #fff6ce;
+}
+.dep-12 .panel-heading {
+  background: #d5f4ff;
+}
+.dep-13 .panel-heading {
+  background: #ffddf6;
+}
+.dep-14 .panel-heading {
+  background: #fff8d9;
+}
+.dep-15 .panel-heading {
+  background: #d8eeff;
+}
+.dep-16 .panel-heading {
+  background: #ffedd8;
+}
+			
+			
+.panel
+{
+	min-width:610px;
+}		
+			
+	

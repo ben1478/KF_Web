@@ -1,0 +1,167 @@
+<div class='panel-heading text-center' style='max-width: 1400px; min-width: 800px;'>
+    <div class='pull-left'>
+        <div class='BtnArea' id='divInitButton' style='width: 95%; padding-top: 3px; padding-bottom: 3px;'>
+            <table style='border-color: black; width: 100%; font-size: small; border-collapse: collapse;'>
+                <tr>
+                    <td style='text-align: left;' nowrap='nowrap'>
+                        <input class='btn btn-primary mb10 mr5 notification' id='btnSave' ondblclick='return false' onclick='SubmitSave()' type='button' value='存檔' />
+                        <input class='btn btn-alert mb10 mr5 notification' id='btnExit' onmouseover='CheckError("IN")' onmouseout='CheckError("OUT")' onclick='CloseMaintain()' type='button' value='離開' />
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div class='pull-right'>
+        <span class='panel-controls'>
+            <img src='/KF_Web/Img/exit.png' onmouseover='CheckError("IN")' onmouseout='CheckError("OUT")' onclick='CloseMaintain()' />
+        </span>
+    </div>
+    <span id='MantainTitle' class='panel-title'></span>
+</div>
+
+
+<table id='BaseCtrl' class='' style='width:95%;font-size:small;border-color: black; border-collapse: collapse;'>
+    <tr>
+        <td class='lbl' style='width:20%;'>
+            <label class='col-lg-2 control-label ' id='lblPayDate'>撥款日期</label>
+            <input type="hidden" fieldid="APP_STATUS" id="hidAPP_STATUS" value="" />
+            <input type="hidden" fieldid="form_no" id="hidForm_no" value="" />
+            <input type="hidden" fieldid="ExamineNo_Pay" id="hidExamineNo" value="" />
+        </td>
+        <td style='width:30%;text-align:left;'>
+            <label class='col-lg-2 control-label ' fieldid="PayDate" id='txtPayDate'></label>
+        </td>
+        <td class='lbl' style='width:20%;'>
+            <label class='col-lg-2 control-label ' id='lblExamineNo_Pay'>金流案編</label>
+        </td>
+        <td style='width:30%;text-align:left;'>
+            <label class='col-lg-2 control-label ' fieldid="ExamineNo_Pay" id='txtExamineNo_Pay'></label>
+        </td>
+    </tr>
+    <tr>
+        <td class='lbl' style='width:20%;'>
+            <label class='col-lg-2 control-label' id='lblcustomer_idcard_no'>申請人ID</label>
+        </td>
+        <td style='width:30%;text-align:left;'>
+            <label class='col-lg-2 control-label ' fieldid="customer_idcard_no" id='txtcustomer_idcard_no'></label>
+        </td>
+        <td class='lbl' style='width:20%;'>
+            <label class='col-lg-2 control-label ' id='lblcustomer_name'>申請人</label>
+        </td>
+        <td style='width:30%;text-align:left;'>
+            <label class='col-lg-2 control-label ' fieldid="customer_name" id='txtcustomer_name'></label>
+        </td>
+    </tr>
+    <tr>
+        <td class='lbl' style='width:20%;'>
+            <label class='col-lg-2 control-label ' id='lblKF_remitAmount'>應撥金額</label>
+        </td>
+        <td style='width:30%;text-align:left;'>
+            <label class='col-lg-2 control-label ' fieldid="KF_remitAmount" id='txtKF_remitAmount'></label>
+        </td>
+        <td class='lbl' style='width:20%;'>
+            <label class='col-lg-2 control-label ' id='lblYR_remitAmount'>代償/還舊</label>
+        </td>
+        <td style='width:30%;text-align:left;'>
+            <label class='col-lg-2 control-label ' fieldid="YR_remitAmount" id='txtYR_remitAmount'></label>
+        </td>
+    </tr>
+    <tr>
+        <td class='lbl Key' style='width:20%;'>
+            <label class='col-lg-2 control-label ' id='lblAppr_Type'>*代撥方式</label>
+        </td>
+        <td style='width:30%;text-align:left;'>
+            <input class='form-control Key' id='txtAppr_Type' fieldid="Appr_Type" maxlength="30" style='width:90%;' type='text' />
+        </td>
+        <td class='lbl Key' style='width:20%;'>
+            <label class='col-lg-2 control-label ' id='lblHandlingFee'>*代扣手續費</label>
+        </td>
+        <td style='width:30%;text-align:left;'>
+            <input class='form-control Key' id='txtHandlingFee' fieldid="HandlingFee" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==7) return false;" style='width:50%;' type='number' />
+        </td>
+    </tr>
+    <tr>
+        <td class='lbl Key' style='width:20%;'>
+            <label class='col-lg-2 control-label ' id='lblPathFee'>*代扣通路費用</label>
+        </td>
+        <td style='width:30%;text-align:left;'>
+            <input class='form-control Key' id='txtPathFee' fieldid="PathFee" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==7) return false;" style='width:50%;' type='number' />
+        </td>
+        <td class='lbl Key' style='width:20%;'>
+            <label class='col-lg-2 control-label ' id='lblCustTotAmt'>*撥申請人</label>
+        </td>
+        <td style='width:30%;text-align:left;'>
+            <input class='form-control Key' id='txtCustTotAmt' fieldid="CustTotAmt" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==8) return false;" style='width:30%;' type='number' />
+            (應撥金額-代扣手續費-代扣通路費用)
+        </td>
+    </tr>
+    <tr>
+        <td class='lbl Key' style='width:20%;'>
+            <label class='col-lg-2 control-label ' id='lblRemitFee'>*匯款作業費</label>
+        </td>
+        <td style='width:30%;text-align:left;'>
+            <input class='form-control Key' id='txtRemitFee' fieldid="RemitFee" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==5) return false;" style='width:30%;' type='number' />
+        </td>
+        <td class='lbl Key' style='width:20%;'>
+            <label class='col-lg-2 control-label ' id='lblActualAmt'>*實撥申請人</label>
+        </td>
+        <td style='width:30%;text-align:left;'>
+            <input class='form-control Key' id='txtActualAmt' fieldid="ActualAmt" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==8) return false;" style='width:30%;' type='number' />
+            (撥申請人-匯款作業費)
+        </td>
+    </tr>
+    <tr>
+        <td class='lbl  Key' style='width:20%;'>
+            <label class='col-lg-2 control-label ' id='lblPathAmt'>*撥通路</label>
+        </td>
+        <td style='width:30%;text-align:left;'>
+            <input class='form-control Key' id='txtPathAmt' fieldid="PathAmt" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==7) return false;" style='width:40%;' type='number' />
+        </td>
+        <td class='lbl ' style='width:20%;'>
+            <label class='col-lg-2 control-label ' id='lblBankCode'>匯款銀行代碼</label>
+        </td>
+        <td style='width:30%;text-align:left;'>
+            <label class='col-lg-2 control-label ' fieldid="BankCode" id='txtBankCode'></label>
+        </td>
+    </tr>
+    <tr>
+        <td class='lbl ' style='width:20%;'>
+            <label class='col-lg-2 control-label ' id='lblBankName'>匯款銀行</label>
+        </td>
+        <td style='width:30%;text-align:left;'>
+            
+            <label class='col-lg-2 control-label ' fieldid="BankName" id='txtBankName'></label>
+        </td>
+        <td class='lbl ' style='width:20%;'>
+            <label class='col-lg-2 control-label ' id='lblBankID'>銀行帳號</label>
+        </td>
+        <td style='width:30%;text-align:left;'>
+            <label class='col-lg-2 control-label ' fieldid="BankID" id='txtBankID'></label>
+        </td>
+    </tr>
+    <tr>
+        <td class='lbl' style='width:20%;'>
+            <label class='col-lg-2 control-label ' id='lblAccountID'>戶名ID</label>
+        </td>
+        <td style='width:30%;text-align:left;'>
+            <label class='col-lg-2 control-label ' fieldid="AccountID" id='txtAccountID'></label>
+        </td>
+        <td class='lbl' style='width:20%;'>
+            <label class='col-lg-2 control-label ' id='lbl'>戶名</label>
+        </td>
+        <td style='width:30%;text-align:left;'>
+            <label class='col-lg-2 control-label ' fieldid="AccountName" id='txtAccountName'></label>
+        </td>
+    </tr>
+    <tr id="trTransfer_date">
+        <td class='lbl Key' style='width:20%;'>
+            <label class='col-lg-2 control-label ' id='lblTransfer_date'>*匯款日期</label>
+        </td>
+        <td style='width:80%;text-align:left;' colspan="3">
+            <input class='form-control' id='txtTransfer_date' fieldid="Transfer_date" style='width:100px;' texttype="Date" type='text' />
+            
+        </td>
+       
+    </tr>
+
+</table>
