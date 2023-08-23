@@ -55,7 +55,7 @@ namespace KF_Web
 
                     string MenuID = "";
 
-                    if (!string.IsNullOrEmpty(Request["MenuID"].ToString()))
+                    if (!string.IsNullOrEmpty(Request["MenuID"]))
                     {
                         MenuID = Request["MenuID"].ToString();
                     }

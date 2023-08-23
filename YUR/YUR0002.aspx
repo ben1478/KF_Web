@@ -308,7 +308,7 @@ body.dragging, body.dragging * {
                             </tr>
                             <tr>
                                   <td class='lbl Key ' style='width:20%;'>
-                                    <label class='col-lg-2 control-label ' id='lblBankCode'>匯款銀行代碼</label>
+                                    <label class='col-lg-2 control-label ' id='lblBankCode'>匯款銀行代碼(包含分行代碼)</label>
                                 </td>
                                 <td colspan="3" style='width:30%;text-align:left;'>
                                     <input class='form-control ' id='txtBankCode' pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==7) return false;" style='width:20%;' type='number' />
@@ -345,7 +345,43 @@ body.dragging, body.dragging * {
                                     <input class="btn btn-primary mb10 mr5 notification" id="btnSameAN" ondblclick="return false" onclick="OnClickSame('AccountName')" type="button" value="同申請人"/>
                                 </td>
                             </tr>
-                           
+                            <tr class="InfoTitle" align="center">
+                                <td colspan="4">金額確認
+                                    
+                                    <input  id="btnSamePay" ondblclick="return false" onclick="OnClickSame('SamePay')" type="button" value="同原始金額"/></td>
+                            </tr>
+                            <tr>
+                                <td class='lbl Key' style='width:20%;'>
+                                    <label class='col-lg-2 control-label ' id='lblinstNo'>期數</label>
+                                </td>
+                                <td style='width:30%;text-align:left;'>
+                                     <input class='form-control ' id='txtinstNo' pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==3) return false;" style='width:20%;' type='number' />
+
+                                    
+                                </td>
+                                <td class='lbl Key' style='width:20%;'>
+                                    <label class='col-lg-2 control-label ' id='lblinstAmt'>期付金</label>
+                                </td>
+                                <td style='width:30%;text-align:left;'>
+                                     <input class='form-control ' id='txtinstAmt' pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==6) return false;" style='width:20%;' type='number' />
+                                </td>
+                            </tr>
+                             <tr>
+                                  <td class='lbl Key ' style='width:20%;'>
+                                    <label class='col-lg-2 control-label ' id='lblinstCap'>申貸金額</label>
+                                </td>
+                                <td  style='width:30%;text-align:left;'>
+                                    <input class='form-control ' id='txtinstCap' pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==8) return false;" style='width:40%;' type='number' />
+                                </td>
+                                   <td class='lbl ' style='width:20%;'>
+                                    <label class='col-lg-2 control-label ' id='lblremitAmount'>借新還舊金額</label>
+                                </td>
+                                <td  style='width:30%;text-align:left;'>
+                                    <input class='form-control ' id='txtremitAmount' pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==8) return false;" style='width:40%;' type='number' />
+                                </td>
+                            </tr>
+                            
+
                             <tr align="center">
                                 <td colspan="4">
                                     <button id="btnRP" onclick="btnRPOnClick()" type="button">請款請求</button>

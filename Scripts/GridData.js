@@ -323,7 +323,7 @@ function GeneratorTable(p_ColumnData, p_EntityData, p_FieldID, p_EventID, p_Even
     if (m_SumColumn != "") {
         m_SumEvent = " onclick='onCheckEvent(\"" + m_SumColumn + "\",\"" + p_FieldID + "\")' ";
     }
-    var m_dtlCheck = "<td style='width:10px;'><input id='dtlchk" + p_FieldID + "' " + m_SumEvent + " "+m_TD_ChkBoxReadOnly+" value=''  type='checkbox' /></td>"
+    var m_dtlCheck = "<td style='width:10px;'><input id='dtlchk" + p_FieldID + "' " + m_SumEvent + " "+m_TD_ChkBoxReadOnly+" value='' class='ChkGrid' type='checkbox' /></td>"
     if (p_GridCtrl != "") {
         if (p_GridCtrl == "checkbox") {
             m_TD_ChkBox = m_dtlCheck;
@@ -403,15 +403,11 @@ function GeneratorTable(p_ColumnData, p_EntityData, p_FieldID, p_EventID, p_Even
                         if (m_RowValue.CurrentSign != null) {
                             m_TdValue = m_RowValue.CurrentSign.trim()
                         }
-                        //if ($("#txtWorkID").val().trim() != m_TdValue) {
-                        if ( $("#txtWorkID").length && $("#txtWorkID").val() != m_TdValue) {
-                            m_TD_ChkBox = String.format(m_TD_ChkBox, "disabled='true'");
-                        }
-                        else {
-                            String.format(m_TD_ChkBox, "");
-                        }
+                     
+                        m_TD_ChkBox = String.format(m_TD_ChkBox, "");
+
                     }
-                    CurrentTD = m_TD_ChkBox.replace("value=''", "value='" + p_GridKey + "'").replace("id='dtlchk" + p_FieldID + "'", "id='dtlchk" + p_FieldID + m_RowIndex.toString() + "'") + CurrentTD;
+                    CurrentTD = m_TD_ChkBox.replace("value=''", "value='" + m_RowValue[p_GridKey].toString()  + "'").replace("id='dtlchk" + p_FieldID + "'", "id='dtlchk" + p_FieldID + m_RowIndex.toString() + "'") + CurrentTD;
                 }
 
 

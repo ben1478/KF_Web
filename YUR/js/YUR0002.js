@@ -954,6 +954,8 @@ function btnRPOnClick()
 	{
 		var objRPData = {};
 		var objBankInfo = {};
+		var objPayInfo = {};
+
 		if($("#RPattachmentFile").length!=0)
 		{
 			if(RPattachmentFile.textContent!="")
@@ -967,9 +969,13 @@ function btnRPOnClick()
 		}
 		objRPData["salesNo"] = $("#txtWorkID").val();
 		objBankInfo = { "BankCode": $("#txtBankCode").val(), "BankName": $("#txtBankName").val(), "BankID": $("#txtBankID").val(), "AccountID": $("#txtAccountID").val(), "AccountName": $("#txtAccountName").val() };
+		objPayInfo = { "instNo": $("#txtinstNo").val(), "instAmt": $("#txtinstAmt").val(), "instCap": $("#txtinstCap").val(), "remitAmount": $("#txtremitAmount").val()  };
+
+
 		var requestData = {
 			RequestPayment: objRPData,
-			BankInfo: objBankInfo
+			BankInfo: objBankInfo,
+			PayInfo: objPayInfo
 		};
 
 
@@ -1448,11 +1454,39 @@ function SubmitCheck(p_Type)
 			Error += CheckFileAndComm('3');
 			Error += CheckFileAndComm('4');
 		}
-		
-		if ($("#txtBankCode").val() == "")
-		{
+
+
+		if ($("#txtinstNo").val() == "" || $("#txtinstNo").val() == "0") {
+			Error += "請輸入:期數 <br>";
+			ErrID = "txtinstNo";
+		}
+		if ($("#txtinstAmt").val() == "" || $("#txtinstAmt").val() == "0") {
+			Error += "請輸入:期付金 <br>";
+			ErrID = "txtinstAmt";
+		}
+		if ($("#txtinstCap").val() == "" || $("#txtinstCap").val() == "0") {
+			Error += "請輸入:申貸金額 <br>";
+			ErrID = "txtinstCap";
+		}
+
+		if ($("#bus_type").val() == "AA22") {
+
+			if ($("#txtremitAmount").val() == "" || $("#txtremitAmount").val() == "0") {
+				Error += "請輸入:借新還舊金額 <br>";
+				ErrID = "txtremitAmount";
+			}
+		}
+
+
+		if ($("#txtBankCode").val() == "") {
 			Error += "請輸入:匯款銀行代碼 <br>";
 			ErrID = "txtBankCode";
+		}
+		else {
+			if ($("#txtBankCode").val().length != 7) {
+				Error += "請輸入:包含分行代碼共7碼的數字 <br>";
+				ErrID = "txtBankCode";
+			}
 		}
 		if ($("#txtBankName").val() == "") {
 			Error += "請輸入:匯款銀行 <br>";
@@ -1489,8 +1523,14 @@ function OnClickSame(p_Type) {
 	if (p_Type == "AccountID") {
 		$("#txtAccountID").val($("#customer_idcard_no").val());
 	}
-	else {
+	else if (p_Type == "AccountName") {
 		$("#txtAccountName").val($("#customer_name").val());
+	}
+	else {
+		$("#txtinstNo").val($("#periods_num").val());
+		$("#txtinstAmt").val($("#payment").val());
+		$("#txtinstCap").val($("#staging_amount").val());
+
 	}
 }
 

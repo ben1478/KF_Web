@@ -21,15 +21,7 @@ namespace KF_Web
         {
             try
             {
-                /* System.Net.ServicePointManager.ServerCertificateValidationCallback = delegate { return true; };
-                 System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12 | SecurityProtocolType.Ssl3 | SecurityProtocolType.Tls;
-
-                 HttpClient httpClient = new HttpClient();
-                 httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/x-www-form-urlencoded"));
-                 httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", "YwIE0H960y4x2knhLhDuPa0lcghiDwmreIY9zpfhKUP");
-                 var content = new Dictionary<string, string>();
-                 content.Add("message", "測試訊息");
-                 httpClient.PostAsync("https://notify-api.line.me/api/notify", new FormUrlEncodedContent(content));*/
+               
                 if (!string.IsNullOrEmpty(Request["DownLoadExcel"]))
                 {
                     SysEntity.Employee m_Employee = new SysEntity.Employee();
@@ -38,14 +30,20 @@ namespace KF_Web
                     if (m_TransResult.isSuccess)
                     {
                         m_Employee = (SysEntity.Employee)m_TransResult.ResultEntity;
-                        string PayDate = "";
+                        string form_nos = "";
 
-                        if (!string.IsNullOrEmpty(Request["PayDate"]))
+                        if (!string.IsNullOrEmpty(Request["form_nos"]))
                         {
-                            PayDate = Request["PayDate"].ToString();
+                            form_nos = Request["form_nos"].ToString();
                         }
                         Dictionary<string, Object> p_Params = new Dictionary<string, Object>();
-                        p_Params.Add("PayDate", PayDate);
+                        Int32 m_idx = 0;
+                        foreach (string ExamineNo in form_nos.Split(','))
+                        {
+                            p_Params.Add("form_no" + m_idx.ToString(), ExamineNo);
+                            m_idx++;
+                        }
+                      
 
                         SysEntity.TransResult m_DateResult = g_BL_YuRich.GetApprExcelInfo(m_Employee, p_Params);
                         if (m_DateResult.isSuccess)
@@ -72,7 +70,7 @@ namespace KF_Web
 
                             IRow headerRow2 = sheet.CreateRow(1);
                             ICell headerCell2 = headerRow2.CreateCell(0);
-                            headerCell2.SetCellValue("廠商:國峯租賃股份有限公司  聯繫電話：02-23121268  優撥日期：" + PayDate);
+                            headerCell2.SetCellValue("廠商:國峯租賃股份有限公司  聯繫電話：02-23121268  優撥日期："  );
                             headerCell2.CellStyle = GetHeaderCellStyle(workbook);
                             // 設定水平合併
                             sheet.AddMergedRegion(new CellRangeAddress(0, 0, 0, headerColSpan - 1));

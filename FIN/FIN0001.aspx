@@ -122,7 +122,7 @@ body.dragging, body.dragging * {
                                                         <tr>
                                                             <td style="text-align: left;">
                                                                
-                                                               <input class="btn btn-primary mb10 mr5  notification" id="btnSearch" controlref="0,5,8,12,8,8,8,10,10,10,10,0,10" onclick="ActionModel('FIN0001','Search','GridData');InitSearchInfo('FIN0001','Search','GridData','')"  type="button" value="搜尋" />
+                                                               <input class="btn btn-primary mb10 mr5  notification" id="btnSearch" controlref="10,10,10,10,10,10,10,10,10,0" onclick="ActionModel('FIN0001','Search','GridData');InitSearchInfo('FIN0001','Search','GridData','')"  type="button" value="搜尋" />
                                                               <!--- <input class="btn btn-primary mb10 mr5  notification" id="btnAdd"  onclick="OpenForm()"  type="button" value="維護撥款明細" />--->
                                                                <button style="height:45px"" class="btn btn-primary mb10 mr5  notification" onclick="OpenExpForm(event)" ><img  src="/KF_Web/Img/ExpXls.png" />優先撥款核對表</button>
                                                             </td>
@@ -145,10 +145,10 @@ body.dragging, body.dragging * {
                                                     <tbody>
                                                          <tr>
                                                             <td class="lbl" style="width: 30%;">
-                                                                <label class="col-lg-2 control-label " id="lblPayDate">撥款日期　:</label>
+                                                                <label class="col-lg-2 control-label " id="lblExamineNo_Pay">審件編號　:</label>
                                                             </td>
                                                             <td>
-                                                                <input class="form-control"  fieldid="PayDate" texttype="Date" id="QtxtPayDate" style="width: 20%" type="text" />
+                                                                <input class="form-control"  fieldid="ExamineNo_Pay" texttype="TEXT" id="QtxtExamineNo_Pay" style="width: 20%" type="text" />
                                                                </td>
                                                         </tr>
                                                     </tbody>
@@ -170,30 +170,46 @@ body.dragging, body.dragging * {
     </form>
     <script type="text/javascript">
 
-     
+        function GetDate() {
+            var d = new Date();
+
+            var month = d.getMonth() + 1;
+            var day = d.getDate();
+
+            var output = d.getFullYear() + '-' +
+                (('' + month).length < 2 ? '0' : '') + month + '-' +
+                (('' + day).length < 2 ? '0' : '') + day;
+            return output
+        }
 
         function OpenExpForm(event) {
-            
-            if ($("#QtxtPayDate").val() == "") {
-                AlertMSG("請輸入撥款日期", "QtxtPayDate", true)
+
+            var form_nos = "";
+            if ($("#divGridArea input:checked").length == 0) {
+                AlertMSG("請至少勾選一筆資料", "QtxtExamineNo_Pay", true)
                 event.preventDefault();
                 return;
 
             }
+            else {
+                $.each($("#divGridArea input:checked"), function (Idx, Item) {
+                    form_nos += $(Item).val()+ ",";
+                });
+            }
             // 使用AJAX請求後端C#程式
             $.ajax({
-                url: "FIN0001.aspx?DownLoadExcel=Y&PayDate=" + $("#QtxtPayDate").val(), // 指向後端C#程式的URL
+                url: "FIN0001.aspx?DownLoadExcel=Y&form_nos=" + form_nos, // 指向後端C#程式的URL
                 type: "GET",
                 dataType: "text", // 請求文本資料
                 success: function (data) {
                     if (data === "") {
-                        alert($("#QtxtPayDate").val()+";無撥款資料!");
+                        alert("無撥款資料!");
                         return; // 離開函式，避免下面的程式碼繼續執行
                     }
                     // 創建下載連結
                     var downloadLink = document.createElement("a");
                     downloadLink.href = 'data:application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;base64,' + encodeURIComponent(data);
-                    downloadLink.download = $("#QtxtPayDate").val() +"-優先撥款核對表.xlsx";
+                    downloadLink.download = GetDate() +"-優先撥款核對表.xlsx";
                     downloadLink.click();
                     event.preventDefault();
                 },
