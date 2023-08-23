@@ -259,11 +259,11 @@ body.dragging, body.dragging * {
         function SetDataToObj(p_Data) {
             var isDisabled = false;
           
-            if (p_Data["Transfer_date"] != "" ) {
+           /* if (p_Data["Transfer_date"] != "" ) {
                 isDisabled = true;
                 setTimeout(' $("#btnSave").hide();', 100);
 
-            }
+            }*/
             $.each(p_Data, function (key, value) {
                 // key 是属性名，value 是对应属性的值
                 var m_Obj = $("#BaseCtrl label[fieldid='" + key + "']");
@@ -274,23 +274,23 @@ body.dragging, body.dragging * {
                 m_Obj = $("#BaseCtrl input[fieldid='" + key + "']");
                 if (m_Obj.length != 0) {
                     m_Obj.val(value);
-                    if ($("#txtGroupID").val() == "FIN01" || isDisabled ) {
+                    /*if ($("#txtGroupID").val() == "FIN01" || isDisabled ) {
                         m_Obj.attr('disabled', true);
-                    }
+                    }*/
                 }
                 
             });
 
-            if ($("#txtGroupID").val() == "AS01") {
+           /* if ($("#txtGroupID").val() == "AS01") {
                 $("#trTransfer_date").hide()
             }
             else if ($("#txtGroupID").val() == "FIN01") {
-                
+               */ 
               
                 $("#trTransfer_date").show()
                 $("#txtTransfer_date").datepicker(g_optTW);
                 $("#txtTransfer_date").attr('disabled', false);
-            }
+           // }
         }
        
 
@@ -327,7 +327,7 @@ body.dragging, body.dragging * {
         function SaveCheck() {
             var m_Result = true;
             var Error = "";
-            if ($("#txtGroupID").val() == "AS01" || $("#txtGroupID").val() == "AD01") {
+           // if ($("#txtGroupID").val() == "AS01" || $("#txtGroupID").val() == "AD01") {
                 $.each($("input.Key"), function (idx, Index) {
                     if (Index.value == "") {
                         Error += "請輸入:" + $("#lbl" + Index.id.replace("txt", "")).text().replace("*", "") + " <br>";
@@ -361,13 +361,13 @@ body.dragging, body.dragging * {
                         alert(xhr.responseText);
                     }
                 });
-            }
+           /* }
             else if ($("#txtGroupID").val() == "FIN01") {
                 if ($("#txtTransfer_date").val() == "") {
                     Error = "請輸入匯款日期";
                     ErrID = "txtTransfer_date";
                 }
-            }
+            }*/
 
             if (Error != "") {
                 AlertMSG(Error, ErrID, true)
