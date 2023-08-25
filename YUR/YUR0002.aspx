@@ -299,6 +299,9 @@ body.dragging, body.dragging * {
                                         <br>
                                         <label id="lblAgreeBook">請上傳-委託撥款同意書</label>
                                         <input type="file" class="RPfile" id="RP_File3"/><label id="lblRP_File3"></label>
+                                        <br>
+                                         <label id="lblSaveBook1">請上傳-匯款存摺封面</label>
+                                        <input type="file" class="RPfile" id="RP_File4"/><label id="lblRP_File4"></label>
                                     </div>
                                 </td>
                             </tr>
@@ -317,7 +320,7 @@ body.dragging, body.dragging * {
                             <tr>
                                
                                 <td class='lbl Key' style='width:20%;'>
-                                    <label class='col-lg-2 control-label ' id='lblBankName'>匯款銀行</label>
+                                    <label class='col-lg-2 control-label ' id='lblBankName'>匯款銀行(包含分行名稱)</label>
                                 </td>
                                 <td style='width:30%;text-align:left;'>
                                     <input class='form-control' id='txtBankName'  maxlength="25" style='width:40%;' type='text' />
