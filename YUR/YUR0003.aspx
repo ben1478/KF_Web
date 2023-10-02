@@ -265,8 +265,12 @@ body.dragging, body.dragging * {
                 success: function (result) {
                     if (result.isSuccess) {
                         $("#txtResponse").val(JSON.stringify(result.ResultEntity));
-                        if ($("#hidCaseStatus").val() != "1" && $("#hidCaseStatus").val() != "RE" && $("#hidCaseStatus").val() != "RS" && $("#hidCaseStatus").val() != "RP") {
-                            $("#btnUpdate").hide();
+                        var objJSON = jQuery.parseJSON(result.ResultEntity);
+                        if (objJSON.objResult.code == "S001") {
+                            if (p_Params["isUpdDB"] == "Y") {
+
+                                alert('更新成功!!transactionId:' + objJSON.objResult.transactionId)
+                            }
                         }
                     }
                     else {

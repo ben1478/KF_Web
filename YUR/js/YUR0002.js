@@ -1002,6 +1002,7 @@ function btnRPOnClick()
 				else
 				{
 					YuRichError(result.resultMsg);
+					$("#btnRP").prop('disabled', false);
 				}
 			},
 			error: function(xhr, status, error) 

@@ -292,7 +292,6 @@ body.dragging, body.dragging * {
                                     <div id="divRPAddFile">
                                          <label id="lblSettingBook">請上傳-設定書;檔案名稱規範，填寫申請人姓名+車牌號碼 (陳小明 715-JAX)</label>
                                         <input type="file" class="RPfile" id="RP_File1"/><label id="lblRP_File1"></label>
-
                                         <br>
                                          <label id="lblSettingBook1">請上傳-指示付款同意書/牌登;檔案名稱規範，填寫審件編號+申請人姓名 (MM09230700001 陳小明)</label>
                                         <input type="file" class="RPfile" id="RP_File2"/><label id="lblRP_File2"></label>
@@ -300,8 +299,14 @@ body.dragging, body.dragging * {
                                         <label id="lblAgreeBook">請上傳-委託撥款同意書</label>
                                         <input type="file" class="RPfile" id="RP_File3"/><label id="lblRP_File3"></label>
                                         <br>
-                                         <label id="lblSaveBook1">請上傳-匯款存摺封面</label>
+                                         <label id="lblSaleBook1">請上傳-銷售契約</label>
                                         <input type="file" class="RPfile" id="RP_File4"/><label id="lblRP_File4"></label>
+                                        <br>
+                                         <label id="lblBargainBook1">請上傳-買賣契約</label>
+                                        <input type="file" class="RPfile" id="RP_File5"/><label id="lblRP_File5"></label>
+                                         <br>
+                                         <label id="lblSaveBook1">請上傳-匯款存摺封面</label>
+                                        <input type="file" class="RPfile" id="RP_File6"/><label id="lblRP_File6"></label>
                                     </div>
                                 </td>
                             </tr>
@@ -439,6 +444,20 @@ body.dragging, body.dragging * {
                         <input type="text" class="YRData Key" id="customer_idcard_no" size="12" maxlength="10">
                     </td>
                 </tr>
+                 <tr bgcolor="#FFFFFF" height="25" align="center">
+                    <td width="10%" class="Key" id="TD_assignor">讓與人(第三人)</td>
+                    <td width="40%" align="left">
+                        <input type="text" class="YRData Key" id="assignor" size="15" maxlength="20"/>
+                    </td>
+                    <td width="10%" class="Key" id="TD_assignor_idno">讓與人(第三人)<br>
+                        身分證字號</td>
+                    <td width="40%" align="left">
+                        <input type="text" class="YRData Key" id="assignor_idno" size="12" maxlength="10"/>
+                    </td>
+                </tr>
+               
+
+
                 <tr bgcolor="#FFFFFF" height="25" align="center">
                     <td width="10%" class="Key"  id="TD_customer_birthday">出生日期</td>
                     <td width="40%" align="left">
@@ -993,7 +1012,7 @@ body.dragging, body.dragging * {
                         <input type="hidden" class="YRData" id="company_principal_name" />
                         <!--- 撥佣對象 通路商統編或是業務身分證字號  --->
                         <input type="hidden" class="YRData" id="commission_target" value="52611690" />
-
+                        
                         <input type="hidden"  runat="server" id="hidCase_Company" value="YL" />
 
                         
