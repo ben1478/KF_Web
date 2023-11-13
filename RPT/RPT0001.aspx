@@ -193,7 +193,7 @@ body.dragging, body.dragging * {
                 if (Achievement.DisplayName == null) {
                     Achievement.DisplayName = "未歸屬部門";
                 }
-                data2.push([Achievement.DisplayName, parseInt(Achievement.check_amount), Achievement.CheckVal]);
+                data2.push([Achievement.DisplayName, parseInt(Achievement.get_amount), Achievement.CheckVal]);
                 toolTip1.push([Achievement.DisplayName]);
             });
             data1.push(data2);
@@ -237,12 +237,12 @@ body.dragging, body.dragging * {
                 m_seriesColors = [p_seriesColors];
             }
             $.each(p_Result, function (idx, Achievement) {
-                line1.push([Achievement.DisplayName, Achievement.check_amount]);
-               // line2.push([Achievement.DisplayName, parseInt( Achievement.check_amount)-150]);
+                line1.push([Achievement.DisplayName, Achievement.get_amount]);
+               // line2.push([Achievement.DisplayName, parseInt( Achievement.get_amount)-150]);
 
-                arrAmt.push(Achievement.check_amount)
+                arrAmt.push(Achievement.get_amount)
                 Name = Achievement.DisplayName;
-                Total += parseInt(Achievement.check_amount);
+                Total += parseInt(Achievement.get_amount);
             });
             if (p_Type == "Year") {
                 m_Tick = 1000;
