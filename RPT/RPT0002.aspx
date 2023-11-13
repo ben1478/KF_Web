@@ -30,6 +30,7 @@
     <script src="js/jqplot.categoryAxisRenderer.js"></script>
     <script type="text/javascript" src="js/jqplot.barRenderer.js"></script>
       <script type="text/javascript" src="js/jqplot.pieRenderer.js?11=14ll4gg55g4u58"></script>
+     <script type="text/javascript" src="js/jqplot.highlighter.js?11=14ll4gg55g4u58"></script>
     <script src="js/jqplot.pointLabels.js"></script>
     <script src="js/bootstrap-datepicker.min.js"></script>
     <link href="css/bootstrap-datepicker.min.css" rel="stylesheet" />
@@ -305,7 +306,7 @@ body.dragging, body.dragging * {
                 if (Achievement.DisplayName == null) {
                     Achievement.DisplayName = "未歸屬部門";
                 }
-                data2.push([Achievement.DisplayName, parseInt(Achievement.check_amount), Achievement.CheckVal]);
+                data2.push([Achievement.DisplayName, parseInt(Achievement.get_amount), Achievement.CheckVal]);
                 toolTip1.push([Achievement.DisplayName]);
             });
             data1.push(data2);
