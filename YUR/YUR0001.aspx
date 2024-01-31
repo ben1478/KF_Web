@@ -110,7 +110,7 @@ body.dragging, body.dragging * {
                                                             <td style="text-align: left;">
                                                                
                                                                 <input class="btn btn-primary mb10 mr5  notification" id="btnSearch" controlref="0,15,15,15,10,15,20,0,0,0" onclick="ActionModel('YUR0001','Search','GridData');InitSearchInfo('YUR0001','Search','GridData','')"  type="button" value="搜尋" />
-                                                                <input class="btn btn-primary mb10 mr5  notification" id="btnAdd"  onclick="OpenForm()"  type="button" value="新增進件" />
+                                                                <input class="btn btn-primary mb10 mr5  notification" id="btnAdd" style="display:none"  onclick="OpenForm()"  type="button" value="新增進件" />
 
                                                             </td>
                                                         </tr>
