@@ -946,8 +946,9 @@ function RefreshbtnAction() {
 
 
 
-function ActionModel(p_EventID, p_FieldID, p_EventActionType, p_PageIndex, p_ActionRef, p_SiteFormStatus, p_IsCustOrder) {
+function ActionModel(p_EventID, p_FieldID, p_EventActionType, p_PageIndex, p_ActionRef, p_SiteFormStatus, p_IsCustOrder,p_CallBack) {
     var m_TargetID = "";
+    var m_CallBack = p_CallBack
     var m_Event = null;
     if (event != undefined) {
         //m_TargetID = $(event)[0].currentTarget.id
@@ -1137,7 +1138,7 @@ function ActionModel(p_EventID, p_FieldID, p_EventActionType, p_PageIndex, p_Act
                     switch (p_EventActionType) {
                         case "GridData":
                         case "GridDataGroup":
-                            GridBind(m_Employee, Result.d, p_FieldID, p_EventID, p_EventActionType, p_PageIndex);
+                            GridBind(m_Employee, Result.d, p_FieldID, p_EventID, p_EventActionType, p_PageIndex, m_CallBack);
 
                             setTimeout('GridMobileCtrl();', 300);
 

@@ -131,9 +131,11 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="ACC\ACC0001.aspx" />
+    <Content Include="AE\AE0001.aspx" />
     <Content Include="FIN\FIN0001.aspx" />
     <Content Include="FIN\FIN0002.aspx" />
     <Content Include="FIN\FIN002.html" />
+    <Content Include="Login_AE.aspx" />
     <Content Include="MenuSet.aspx" />
     <Content Include="RPT\css\bootstrap-datepicker.min.css" />
     <Content Include="RPT\css\jquery.jqplot.min.css" />
@@ -1063,6 +1065,13 @@
     <Compile Include="ACC\ACC0001.aspx.designer.cs">
       <DependentUpon>ACC0001.aspx</DependentUpon>
     </Compile>
+    <Compile Include="AE\AE0001.aspx.cs">
+      <DependentUpon>AE0001.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AE\AE0001.aspx.designer.cs">
+      <DependentUpon>AE0001.aspx</DependentUpon>
+    </Compile>
     <Compile Include="FIN\FIN0001.aspx.cs">
       <DependentUpon>FIN0001.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1076,6 +1085,13 @@
     </Compile>
     <Compile Include="FIN\FIN0002.aspx.designer.cs">
       <DependentUpon>FIN0002.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Login_AE.aspx.cs">
+      <DependentUpon>Login_AE.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Login_AE.aspx.designer.cs">
+      <DependentUpon>Login_AE.aspx</DependentUpon>
     </Compile>
     <Compile Include="MenuSet.aspx.cs">
       <DependentUpon>MenuSet.aspx</DependentUpon>

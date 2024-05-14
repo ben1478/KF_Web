@@ -1092,12 +1092,12 @@ namespace KF_Web
         }
         
         [System.Web.Services.WebMethod(enableSession: true)]
-        public static SysEntity.TransResult LoginCheck(string WorkID, string PW)
+        public static SysEntity.TransResult LoginCheck(string WorkID, string PW, string Company)
         {
             SysEntity.TransResult m_TransResult = new SysEntity.TransResult();
             try
             {
-                m_TransResult = g_BL_System.ReLogin( WorkID, PW);
+                m_TransResult = g_BL_System.ReLogin( WorkID, PW, Company);
                 if (m_TransResult.isSuccess)
                 {
                     HttpContext context = HttpContext.Current;

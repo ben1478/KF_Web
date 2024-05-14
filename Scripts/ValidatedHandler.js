@@ -358,7 +358,7 @@ function Login() {
             type: "POST",
             contentType: "application/json; charset=utf-8",
             url: g_Page + "/LoginCheck",
-            data: JSON.stringify({ "WorkID": $("#txtID").val(), "PW": $("#txtPWD").val() }),
+            data: JSON.stringify({ "WorkID": $("#txtID").val(), "PW": $("#txtPWD").val(), "Company": $("#txtCompanyCode").val() }),
             async: false,
             dataType: "json",
             success: function (Result) {

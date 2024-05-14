@@ -23,6 +23,7 @@ namespace KF_Web
         {
             try
             {
+                Boolean m_IsMobile = g_FH.GetDeviceIsMobile(Request.ServerVariables["HTTP_USER_AGENT"].ToString());
                 string m_TimeParam = "?d=" + DateTime.Now.ToString("yyyyMMddhhmmss");
                 Page.ClientScript.RegisterClientScriptInclude("FunctionHandler", ResolveUrl("~/Scripts/FunctionHandler.js" + m_TimeParam));
                 Page.ClientScript.RegisterClientScriptInclude("GridData", ResolveUrl("~/Scripts/GridData.js" + m_TimeParam));
@@ -33,6 +34,7 @@ namespace KF_Web
                 SysEntity.TransResult m_TransResult = GetLoinUser(Request);
                 if (m_TransResult.isSuccess)
                 {
+                   
                     m_Employee = (SysEntity.Employee)m_TransResult.ResultEntity;
                     g_FH.GetCtrlSetVal(m_Employee.CompanyCode, (Control)FindControl("txtCompanyCode"));
                     g_FH.GetCtrlSetVal(m_Employee.WorkID, (Control)FindControl("txtWorkID"));
@@ -40,16 +42,22 @@ namespace KF_Web
                     g_FH.GetCtrlSetVal(m_Employee.Remark, (Control)FindControl("txtRemark"));
                     g_FH.GetCtrlSetVal(m_Employee.DisplayName, (Control)FindControl("DisplayName"));
                     g_FH.GetCtrlSetVal(m_Employee.GroupID, (Control)FindControl("txtGroupID"));
+                    g_FH.GetCtrlSetVal(m_Employee.UserIP, (Control)FindControl("hidUserIP"));
+                    ((System.Web.UI.WebControls.HiddenField)FindControl("hidIsMobile")).Value = m_IsMobile ? "Y" : "N";
                     if (m_Employee.CompanyCode == "1000")
                     {
                         g_FH.GetCtrlSetVal("KF", (Control)FindControl("hidCase_Company"));
                     }
-                    else
+                    else if (m_Employee.CompanyCode == "AE")
                     { 
+                        g_FH.GetCtrlSetVal("AE", (Control)FindControl("hidCase_Company"));
+                       
+                    }
+                    else 
+                    {
                         g_FH.GetCtrlSetVal("YL", (Control)FindControl("hidCase_Company"));
 
                     }
-
 
 
 
@@ -115,10 +123,11 @@ namespace KF_Web
                 if (m_LOGON_USER == "" && Session["LoginUser"] == null)
                 {
                     string myScript = "\n<script type=\"text/javascript\" language=\"Javascript\" id=\"EventScriptBlock\">\n";
-                    myScript += " ShowTimeOut()";
+                    myScript += " alert('連線已逾時'); window.location.href='https://www.kuofong.com.tw/about-us'";
                     myScript += "\n\n </script>";
                     Page.ClientScript.RegisterStartupScript(this.GetType(), "myKey", myScript, false);
                     m_TransResult.isSuccess = false;
+                   
                 }
                 else
                 {

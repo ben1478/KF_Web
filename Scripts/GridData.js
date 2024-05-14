@@ -35,7 +35,7 @@ function GridMobileCtrl() {
 
             if ($("#MobileScroll").length == 0) {
                 var m_top = GetTop();
-                $('.timeout').append("<table id='MobileScroll' style='height:32px;position: fixed  ;top: " + m_top + "; left: 10%; ' ><tr><td style='width:32px;opacity: 0.5;background-repeat: no-repeat;background-image: url(\"/KF_Web/Img/Left.png\")' onclick='MobileScroll(\"left\")'>　</td><td>　　　</td><td style='width:32px;opacity: 0.5;background-repeat: no-repeat;background-image: url(\"Img/Right.png\")'  onclick='MobileScroll(\"right\")' >　</td></tr> </table>")
+                //$('.timeout').append("<table id='MobileScroll' style='height:32px;position: fixed  ;top: " + m_top + "; left: 10%; ' ><tr><td style='width:32px;opacity: 0.5;background-repeat: no-repeat;background-image: url(\"/KF_Web/Img/Right.png\")' onclick='MobileScroll(\"Right\")'>　</td><td>　　　</td><td style='width:32px;opacity: 0.5;background-repeat: no-repeat;background-image: url(\"Img/Right.png\")'  onclick='MobileScroll(\"right\")' >　</td></tr> </table>")
             }
 
             $(".divGridHead").css("min-width", "600px");
@@ -77,7 +77,7 @@ function InitSearchInfo(p_EventID, p_FieldID, p_EventActionType, p_SiteFormStatu
 
 var g_Expan = "/KF_Web/Img/Exp.png";
 var g_Colla = "/KF_Web/Img/Col.png";
-function GridBind(p_Employee, p_Result, p_FieldID, p_EventID, p_EventActionType, p_PageIndex) {
+function GridBind(p_Employee, p_Result, p_FieldID, p_EventID, p_EventActionType, p_PageIndex, p_CallBack) {
     var m_GridData = p_Result.ResultEntity;
     var m_GridKey = p_Result.GridKey.split(';')[0];
    //Grid控制項
@@ -118,7 +118,7 @@ function GridBind(p_Employee, p_Result, p_FieldID, p_EventID, p_EventActionType,
                 if (Result.d != null) {
                     if (Result.d.isSuccess) {
                         var m_tarnLang = Result.d.ResultEntity;
-                        GeneratorTable(m_tarnLang, m_GridData[1], p_FieldID, p_EventID, p_EventActionType, p_PageIndex, m_TotalCount, m_TotalPage, m_PageSize, m_GroupBy, m_GridKey, m_GridCtrl);
+                        GeneratorTable(m_tarnLang, m_GridData[1], p_FieldID, p_EventID, p_EventActionType, p_PageIndex, m_TotalCount, m_TotalPage, m_PageSize, m_GroupBy, m_GridKey, m_GridCtrl, p_CallBack);
                         if ($("#imgQIco").length != 0) {
                             QueryIcoCtrl($("#imgQIco"), "up", p_FieldID);
                         }
@@ -194,7 +194,7 @@ function CheckAllGridChkBox(p_event, p_ChkID, p_SumColumn, p_FieldID) {
         onCheckEvent(p_SumColumn, p_FieldID);
     }
 }
-function GeneratorTable(p_ColumnData, p_EntityData, p_FieldID, p_EventID, p_EventActionType, p_PageIndex, p_TotalCount, p_TotalPage, p_PageSize, p_GroupBy, p_GridKey, p_GridCtrl) {
+function GeneratorTable(p_ColumnData, p_EntityData, p_FieldID, p_EventID, p_EventActionType, p_PageIndex, p_TotalCount, p_TotalPage, p_PageSize, p_GroupBy, p_GridKey, p_GridCtrl, p_CallBack) {
     var m_PageIndex = "1";
     if (p_PageIndex != "" && p_PageIndex != undefined) {
         m_PageIndex = p_PageIndex;
@@ -507,7 +507,9 @@ function GeneratorTable(p_ColumnData, p_EntityData, p_FieldID, p_EventID, p_Even
         
         }
     }
-                            
+    if (p_CallBack != "") {
+        setTimeout('GridCallBack();', 300);
+    }
 }
 
 function ReplaceSymbol(p_String) {
