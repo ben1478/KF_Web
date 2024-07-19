@@ -305,7 +305,7 @@ function GeneratorTable(p_ColumnData, p_EntityData, p_FieldID, p_EventID, p_Even
     });
     //  m_HeadTable += m_TH_ChkBox + m_QueryFormTH + m_Table_TH + " </tr></table>";
     m_HeadTable += m_TH_ChkBox + m_QueryFormTH + m_Table_TH + " </tr></table></div>";
-    var m_Div = "<div class='scroll divGridBody' id='" + p_FieldID + "scroll' style='height:550px;'>";
+    var m_Div = "<div class='scroll divGridBody' id='" + p_FieldID + "scroll' style='height:420px;'>";
    
     var m_DataTable = "<table class='tabGridBody table table-striped table-hover' id='tabGridBody" + p_FieldID + "'  > ";
     var m_Table_TD = "";
@@ -507,7 +507,7 @@ function GeneratorTable(p_ColumnData, p_EntityData, p_FieldID, p_EventID, p_Even
         
         }
     }
-    if (p_CallBack != "") {
+    if (p_CallBack != "" && p_CallBack != undefined ) {
         setTimeout('GridCallBack();', 300);
     }
 }

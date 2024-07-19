@@ -1,0 +1,133 @@
+<div class='panel-heading text-center' style='max-width: 1400px; min-width: 800px;'>
+    <div class='pull-left'>
+        <div class='BtnArea' id='divInitButton' style='width: 95%; padding-top: 3px; padding-bottom: 3px;'>
+            <table style='border-color: black; width: 100%; font-size: small; border-collapse: collapse;'>
+                <tr>
+                    <td style='text-align: left;' nowrap='nowrap'>
+                        <input class='btn btn-primary mb10 mr5 notification' id='btnSave' ondblclick='return false' onclick='SubmitSave()' type='button' value='存檔' />
+                        <input class='btn btn-alert mb10 mr5 notification' id='btnExit' onmouseover='CheckError("IN")' onmouseout='CheckError("OUT")' onclick='CloseMaintain()' type='button' value='離開' />
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div class='pull-right'>
+        <span class='panel-controls'>
+            <img src='/KF_Web/Img/exit.png' onmouseover='CheckError("IN")' onmouseout='CheckError("OUT")' onclick='CloseMaintain()' />
+        </span>
+    </div>
+    <span id='MantainTitle' class='panel-title'></span>
+</div>
+
+
+<div id='BaseCtrl' class="container">
+    <div class="Base-div left-div">
+        <input type="hidden" name="hidTM_type" id="hidTM_type" value="2">
+        <input type="hidden" name="hidTM_id" id="hidTM_id" value="108400">
+        <input type="hidden" name="hidTM_D_id" id="hidTM_D_id" value="12377">
+        <input type="hidden" name="hidHA_id" id="hidHA_id" value="10002288">
+
+
+        <table width="100%" border="0" cellpadding="4" cellspacing="1" bgcolor="#666666">
+            <tbody>
+                <tr>
+                    <td align="center" height="30" bgcolor="#CCCCFF" class="c12-k">客戶姓名</td>
+                    <td bgcolor="#FFFFFF">賴怡如:</td>
+                </tr>
+                <tr>
+                    <td align="center" height="30" bgcolor="#CCCCFF" class="c12-k">身分證字號</td>
+                    <td bgcolor="#FFFFFF"></td>
+                </tr>
+                <tr>
+                    <td align="center" height="30" bgcolor="#CCCCFF" class="c12-k">連絡電話1</td>
+                    <td bgcolor="#FFFFFF">A220800394</td>
+                </tr>
+                <tr>
+                    <td align="center" height="30" bgcolor="#CCCCFF" class="c12-k">連絡電話2</td>
+                    <td bgcolor="#FFFFFF">0968865651</td>
+                </tr>
+                <tr>
+                    <td align="center" height="30" bgcolor="#CCCCFF" class="c12-k">地址</td>
+                    <td bgcolor="#FFFFFF">新北市板橋區民生路三段323號十二樓之11</td>
+                </tr>
+                <tr>
+                    <td align="center" height="30" bgcolor="#CCCCFF" class="c12-k">備註</td>
+                    <td bgcolor="#FFFFFF"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="Base-div right-div">
+        <table align="center" border="0" cellpadding="0" cellspacing="0">
+            <tbody>
+                <tr>
+                    <td align="center" height="30" bgcolor="#FFFFFF" class="c12-k">客戶名稱：</td>
+                    <td bgcolor="#FFFFFF">賴怡如:&nbsp;&nbsp;A220800394</td>
+                </tr>
+                <tr>
+                    <td align="left" height="30" bgcolor="#FFFFFF" class="c12-k">已聯絡次數：&nbsp;&nbsp;</td>
+                    <td align="Right">
+                        <input type="button" id="add_TM_log" name="add_TM_log" value="新增電銷紀錄" onclick="add_TM_log('10002288','108400', '12377', '2', '', 'add_TM_log');">&nbsp;
+                        <span style="color:red;">只顯示最近10筆電銷紀錄</span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <form id="form3" name="form3" method="post" action="call_center.asp?Selfin_type=&amp;CS_MTEL1=&amp;SelCall_type=CALL_T03&amp;NoCall=&amp;TelAsk=&amp;TelSour=">
+
+            <table width="100%" border="0" cellpadding="4" cellspacing="1" bgcolor="#666666">
+
+                <tbody>
+                    <tr align="center" height="30" bgcolor="#CCCCFF" class="c12-k">
+                        <td width="3%">序</td>
+                        <td width="20%">聯絡時間</td>
+                        <td width="7%">電銷人員</td>
+                        <td width="7%">撥打狀態</td>
+                        <td width="7%">確認狀態</td>
+                        <td width="30%">備註</td>
+
+                        <td width="5%">刪除</td>
+                    </tr>
+
+                    <tr align="center" height="30" bgcolor="#CCCCFF" class="c12-k">
+                        <td bgcolor="#FFFFFF">1</td>
+                        <td bgcolor="#FFFFFF">
+                            起：2024-05-24 11:02:53<br>
+                            訖：2024-05-24 11:03:02
+                        </td>
+                        <td bgcolor="#FFFFFF">陳瑜喬</td>
+                        <td bgcolor="#FFFFFF">接通</td>
+                        <td bgcolor="#FFFFFF">估價中</td>
+                        <td bgcolor="#FFFFFF" style="word-break: break-all;">
+                            <table style="width:100%">
+                                <tbody>
+                                    <tr>
+                                        <td style="width:90%">
+                                            <span id="memo_8044"></span>
+                                        </td>
+                                        <td style="width:10%">
+                                            <img src="../images/edit.png" width="16" height="18" border="0" title="修改備註" style="cursor: pointer;" onclick="UpdTelLog('8044')">
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </td>
+                        <td bgcolor="#FFFFFF" class="EDIT" onclick="DelTelLog('8044')">刪除</td>
+                    </tr>
+
+                    <tr id="trMEMO" style="display:none" align="center" height="30" bgcolor="#FFF">
+                        <td colspan="8">
+                            <input type="hidden" id="action" name="action" value="Upd_TM_log">
+                            <input type="hidden" id="LogKey" name="LogKey">
+                            <textarea style="width:80%; FONT-FAMILY: Verdana, serif; BACKGROUND-COLOR: #ffffcc" id="memo_log" name="memo_log" rows="5"></textarea>
+                            <input type="submit" name="submit" value="確定" id="btnUpd" onclick="btnUpd()">
+                        </td>
+
+
+                    </tr>
+                </tbody>
+            </table>
+        </form>
+    </div>
+</div>
+
